@@ -232,7 +232,9 @@ if st.sidebar.button("🚀 EXECUTE MISSION", use_container_width=True):
     st.markdown("<div style='margin-top:25px;'></div>", unsafe_allow_html=True) 
     st.markdown("### 🧠 Diagnostic Report")
     shap_abs = np.abs(shap_v[0]) if len(shap_v.shape) > 1 else np.abs(shap_v)
-    top_feature = model_columns[np.argmax(shap_abs)].replaсe('_', ' ') if hasattr(model_columns[np.argmax(shap_abs)], 'replace') else str(model_columns[np.argmax(shap_abs)])
+    
+    # --- FIXED THE ERROR ON THE LINE BELOW ---
+    top_feature = model_columns[np.argmax(shap_abs)].replace('_', ' ') if hasattr(model_columns[np.argmax(shap_abs)], 'replace') else str(model_columns[np.argmax(shap_abs)])
     
     st.markdown(f"""
     <div class="ai-box">
