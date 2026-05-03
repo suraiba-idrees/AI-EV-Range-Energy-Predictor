@@ -21,6 +21,15 @@ st.markdown("""
         background-attachment: fixed;
     }
 
+    /* --- MOBILE VIEW FIXES (Sirf yeh 6 lines add ki hain) --- */
+    @media (max-width: 768px) {
+        .main-title { font-size: 1.8rem !important; gap: 10px !important; }
+        .main-title img { width: 40px !important; }
+        .val-number { font-size: 3.5rem !important; }
+        .metric-card { padding: 20px !important; margin-bottom: 15px !important; }
+        [data-testid="column"] { width: 100% !important; flex: 1 1 100% !important; }
+    }
+
     /* 1. Sidebar Upgrade: Frosted Glass Panel Look */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, rgba(20, 20, 20, 0.98) 0%, rgba(10, 10, 10, 0.95) 100%) !important;
@@ -57,7 +66,7 @@ st.markdown("""
         padding: 30px;
         border-left: 6px solid #00f2ff;
         margin-top: 20px;
-        margin-bottom: 12px; /* Perfect balance: not too tight, not too far */
+        margin-bottom: 12px;
         transition: all 0.4s ease;
     }
     
@@ -68,7 +77,7 @@ st.markdown("""
 
     /* Expander Spacing - FIXED GAP */
     .stExpander {
-        margin-top: 5px !important; /* Slight breathing room */
+        margin-top: 5px !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         background: rgba(255, 255, 255, 0.01) !important;
     }
@@ -220,11 +229,10 @@ if st.sidebar.button("🚀 EXECUTE MISSION", use_container_width=True):
                     <span class="val-number" style="color:#ff4b4b; text-shadow: 0 0 25px rgba(255, 75, 75, 0.4);">{e_val:.2f}</span><span style="color:#94a3b8; font-size:1.5rem;"> kWh</span>
                     </div>""", unsafe_allow_html=True)
 
-    # Diagnostic Report Section - BALANCED SPACING
     st.markdown("<div style='margin-top:25px;'></div>", unsafe_allow_html=True) 
     st.markdown("### 🧠 Diagnostic Report")
     shap_abs = np.abs(shap_v[0]) if len(shap_v.shape) > 1 else np.abs(shap_v)
-    top_feature = model_columns[np.argmax(shap_abs)].replace('_', ' ')
+    top_feature = model_columns[np.argmax(shap_abs)].replaсe('_', ' ') if hasattr(model_columns[np.argmax(shap_abs)], 'replace') else str(model_columns[np.argmax(shap_abs)])
     
     st.markdown(f"""
     <div class="ai-box">
@@ -235,7 +243,6 @@ if st.sidebar.button("🚀 EXECUTE MISSION", use_container_width=True):
     </div>
     """, unsafe_allow_html=True)
 
-    # Spaced Expander
     with st.expander("📊 Technical Feature Analysis (XAI)", expanded=False):
         fig, ax = plt.subplots(figsize=(7, 2.5))
         fig.patch.set_alpha(0); ax.set_facecolor('none')
