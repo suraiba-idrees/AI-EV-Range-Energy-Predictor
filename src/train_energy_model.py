@@ -25,11 +25,11 @@ print("🚀 Training Professional EV Energy Consumption Model..!")
 # --- 1. SETUP PATHS & LOAD DATA ---
 script_dir = os.path.dirname(os.path.abspath(__file__))
 # Using Dynmaic Path
-dataset_path = os.path.join(script_dir, "Data", "EV_dataset.csv") 
+dataset_path = os.path.join(script_dir, "data", "EV_dataset.csv") 
 
 # fallback path
 if not os.path.exists(dataset_path):
-    dataset_path = r'D:\FYP\Code\Data\EV_dataset.csv'
+    dataset_path = os.path.join(script_dir, "EV_dataset.csv")
 
 df = pd.read_csv(dataset_path) 
 
