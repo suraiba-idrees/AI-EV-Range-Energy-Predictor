@@ -1,9 +1,10 @@
 # 🏎️ NEURA-DRIVE: AI-Powered EV Engine
 > **Final Year Project:** An Advanced Electric Vehicle Range & Energy Consumption Predictor using Ensemble Learning.
 
-[![Python](https://shields.io)](https://python.org)
-[![Streamlit](https://shields.io)](https://streamlit.io)
-[![Machine Learning](https://shields.io)](https://scikit-learn.org)
+![Python](https://shields.io)
+![Streamlit](https://shields.io)
+![Scikit-Learn](https://shields.io)
+
 
 ## 🌟 Project Overview
 **Neura-Drive** is an intelligent analytical dashboard designed to tackle one of the biggest challenges in the EV industry: **Range Anxiety**. By leveraging an ensemble of **Random Forest** and **XGBoost** models, it provides highly accurate predictions for vehicle range and energy consumption based on real-world driving conditions.
