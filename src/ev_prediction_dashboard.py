@@ -103,11 +103,11 @@ st.markdown("""
 def load_assets():
     base_path = os.path.dirname(os.path.abspath(__file__))
     try:
-        model = joblib.load(os.path.join(base_path, "ev_model.pkl"))
-        scaler = joblib.load(os.path.join(base_path, "scaler.pkl"))
-        encoder = joblib.load(os.path.join(base_path, "encoder.pkl"))
-        model_columns = joblib.load(os.path.join(base_path, "model_columns.pkl"))
-        csv_path = os.path.join(base_path, "EV_dataset.csv")
+        model = joblib.load(os.path.join(base_path, "models", "ev_model.pkl"))
+        scaler = joblib.load(os.path.join(base_path, "models", "scaler.pkl"))
+        encoder = joblib.load(os.path.join(base_path, "models", "encoder.pkl"))
+        model_columns = joblib.load(os.path.join(base_path, "models", "model_columns.pkl"))
+        csv_path = os.path.join(base_path, "data", "EV_dataset.csv")
         if not os.path.exists(csv_path): csv_path = os.path.join(base_path, "Data", "EV_dataset.csv")
         return model, scaler, encoder, model_columns, pd.read_csv(csv_path)
     except Exception as e:
