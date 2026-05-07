@@ -1,9 +1,9 @@
 # 🏎️ NEURA-DRIVE: AI-Powered EV Engine
 > **Final Year Project:** An Advanced Electric Vehicle Range & Energy Consumption Predictor using Ensemble Learning.
 
-![Python](https://shields.io)
-![Streamlit](https://shields.io)
-![Scikit-Learn](https://shields.io)
+![](https://shields.io)
+![](https://shields.io)
+![](https://shields.io)
 
 
 ## 🌟 Project Overview
