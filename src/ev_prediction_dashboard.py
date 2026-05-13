@@ -102,21 +102,17 @@ st.markdown("""
 @st.cache_resource
 def load_assets():
     base_path = os.path.dirname(os.path.abspath(__file__))
-    root_path = os.path.dirname(base_path) 
-
+       root_path = os.path.dirname(base_path) 
     try:
-        model_folder = os.path.join(root_path, "models")
-        
-        model = joblib.load(os.path.join(model_folder, "ev_model.pkl"))
-        scaler = joblib.load(os.path.join(model_folder, "scaler.pkl"))
-        encoder = joblib.load(os.path.join(model_folder, "encoder.pkl"))
-        model_columns = joblib.load(os.path.join(model_folder, "model_columns.pkl"))
-        csv_path = os.path.join(root_path, "data", "EV_dataset.csv")
-        
+        model = joblib.load(os.path.join(base_path, "ev_model.pkl"))
+        scaler = joblib.load(os.path.join(base_path, "scaler.pkl"))
+        encoder = joblib.load(os.path.join(base_path, "encoder.pkl"))
+        model_columns = joblib.load(os.path.join(base_path, "model_columns.pkl"))
+        csv_path = os.path.join(base_path, "EV_dataset.csv")
+        if not os.path.exists(csv_path): csv_path = os.path.join(base_path, "data", "EV_dataset.csv")
         return model, scaler, encoder, model_columns, pd.read_csv(csv_path)
     except Exception as e:
-        st.error(f"Missing Files or Path Error: {e}")
-        st.stop()
+        st.error(f"Missing Files: {e}"); st.stop()
 
 model, scaler, encoder, model_columns, ev_data = load_assets()
 
