@@ -103,7 +103,7 @@ st.markdown("""
 def load_assets():
     base_path = os.path.dirname(os.path.abspath(__file__))
     root_path = os.path.dirname(base_path) 
-    model_folder = os.path.join(root_path, "model")
+    model_folder = os.path.join(root_path, "models")
 
     try:
         model = joblib.load(os.path.join(model_folder, "ev_model.pkl"))
