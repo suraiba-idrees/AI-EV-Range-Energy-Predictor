@@ -99,22 +99,24 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- 2. ASSET LOADING ---
+# --- 2. SIMPLE ASSET LOADING ---
 @st.cache_resource
 def load_assets():
     base_path = os.path.dirname(os.path.abspath(__file__))
-    root_path = os.path.dirname(base_path) 
-    model_folder = os.path.join(root_path, "models")
-
+    root_path = os.path.dirname(base_path)
+    
     try:
-        model = joblib.load(os.path.join(model_folder, "ev_model.pkl"))
-        scaler = joblib.load(os.path.join(model_folder, "scaler.pkl"))
-        encoder = joblib.load(os.path.join(model_folder, "encoder.pkl"))
-        model_columns = joblib.load(os.path.join(model_folder, "model_columns.pkl"))
-        csv_path = os.path.join(model_folder, "EV_dataset.csv") 
+        model_path = os.path.join(root_path, "models")
+        model = joblib.load(os.path.join(model_path, "ev_model.pkl"))
+        scaler = joblib.load(os.path.join(model_path, "scaler.pkl"))
+        encoder = joblib.load(os.path.join(model_path, "encoder.pkl"))
+        model_columns = joblib.load(os.path.join(model_path, "model_columns.pkl"))
+       
+        csv_path = os.path.join(root_path, "data", "EV_dataset.csv")
         
         return model, scaler, encoder, model_columns, pd.read_csv(csv_path)
     except Exception as e:
-        st.error(f"File Loading Error: {e}")
+        st.error(f"Error: {e}")
         st.stop()
 
 model, scaler, encoder, model_columns, ev_data = load_assets()
