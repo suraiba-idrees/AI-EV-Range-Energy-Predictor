@@ -102,7 +102,6 @@ st.markdown("""
 @st.cache_resource
 def load_assets():
     base_path = os.path.dirname(os.path.abspath(__file__))
-       root_path = os.path.dirname(base_path) 
     try:
         model = joblib.load(os.path.join(base_path, "ev_model.pkl"))
         scaler = joblib.load(os.path.join(base_path, "scaler.pkl"))
