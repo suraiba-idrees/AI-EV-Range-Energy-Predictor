@@ -1,4 +1,5 @@
 """
+
 EV Energy Consumption Training Script
 - Preprocessing: Outlier removal via IQR and Log-Transformation (log1p) for target smoothing.
 - Optimization: Hyperparameter tuning of Random Forest using GridSearchCV.
@@ -23,19 +24,14 @@ print("🚀 Training Professional EV Energy Consumption Model..!")
 
 # --- 1. SETUP PATHS & LOAD DATA ---
 script_dir = os.path.dirname(os.path.abspath(__file__))
+# Using Dynmaic Path
+dataset_path = os.path.join(script_dir, "data", "EV_dataset.csv") 
 
-# use dynamic path
-dataset_path = os.path.join(script_dir, "Data", "EV_dataset.csv") 
-
+# fallback path
 if not os.path.exists(dataset_path):
     dataset_path = os.path.join(script_dir, "EV_dataset.csv")
 
-try:
-    df = pd.read_csv(dataset_path)
-    print(f"✅ Dataset loaded from: {dataset_path}")
-except FileNotFoundError:
-    print("❌ Error: EV_dataset.csv not found! Make sure it's in the same folder.")
-    exit()
+df = pd.read_csv(dataset_path) 
 
 # Target and categorical columns
 target = "Energy_Consumption_kWh"
