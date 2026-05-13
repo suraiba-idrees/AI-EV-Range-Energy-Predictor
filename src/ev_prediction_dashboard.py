@@ -111,7 +111,6 @@ def load_assets():
         scaler = joblib.load(os.path.join(model_folder, "scaler.pkl"))
         encoder = joblib.load(os.path.join(model_folder, "encoder.pkl"))
         model_columns = joblib.load(os.path.join(model_folder, "model_columns.pkl"))
-      
         csv_path = os.path.join(root_path, "data", "EV_dataset.csv")
         
         return model, scaler, encoder, model_columns, pd.read_csv(csv_path)
